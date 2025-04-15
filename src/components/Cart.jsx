@@ -8,7 +8,7 @@ const Cart = (props) => {
     });
 
     return (
-        <div>
+        <div className="fixed top-0 right-0 p-2 bg-white">
             <p>Shopping Cart: { cart.length > 0 && `${cart.length} Item${cart.length === 1 ? '' : 's'}` }</p>
 
             <ul className="hidden">
