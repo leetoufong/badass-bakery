@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Ranchers&display=swap');
+@import "tailwindcss";
+
+@theme {
+    /* --color-*: initial; */
+    --color-pink-light: #ee73B5;
+    --color-pink: #f7b2ee;
+    --color-blue: #79bbe3;
+    --color-purple: #7e65b7;
+    --color-text: #333;
+    --font-display: 'Ranchers', sans-serif;
+}
+
+body {
+    color: var(--text);
+    font-size: 1rem;
+    line-height: 1.45;
+}
+
+@layer components {
+    .btn {
+        @apply px-3 py-1 rounded border;
+    }   
+}
+
+.billboard {
+
+}

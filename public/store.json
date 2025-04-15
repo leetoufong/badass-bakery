@@ -1,0 +1,41 @@
+{
+    "title": "Badass Bakery",
+    "description": "A badass bakery you love to try",
+    "products": [
+        {
+            "id": "423D-3G2D-DGX12",
+            "title": "Hello Sundae",
+            "descripton": "The best hello world you'll ever taste",
+            "image": "https://picsum.photos/240/184",
+            "price": 4.50
+        },
+        {
+            "id": "M35H-ADFQ-LB91",
+            "title": "Sponge Cake",
+            "descripton": "Topped inside and out with strawberries, blue berries, kiwi and tangerine.",
+            "image": "https://picsum.photos/242/184",
+            "price": 29.99
+        },
+        {
+            "id": "C003-B123-449Z",
+            "title": "Steamed Coconut Layered Cake",
+            "descripton": "Coconut milk steamed into creamy goodness. ",
+            "image": "https://picsum.photos/244/186",
+            "price": 12.00
+        },
+        {
+            "id": "0D2D-BAAS-COF3",
+            "title": "Vietnamese Iced Coffee",
+            "descripton": "Able to cool you down and pucker you up all at the same time. Made with condensed milk.",
+            "image": "https://picsum.photos/243/185",
+            "price": 3.99
+        },
+        {
+            "id": "BA3Z-39FF-ADG4",
+            "title": "Sesame Balls",
+            "descripton": "Friend to perfection and filled with your choice of soybean paste or taro.",
+            "image": "https://picsum.photos/241/182",
+            "price": 10.25
+        }
+    ]
+}
