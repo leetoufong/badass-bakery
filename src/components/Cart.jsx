@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router";
 
 const Cart = (props) => {
     const { cart } = props;
@@ -28,9 +29,7 @@ const Cart = (props) => {
             
             <p><strong>Sub Total: {formatUSDHandler.format(cart.reduce((accumulator, currentValue) => accumulator + currentValue.price, 0))}</strong></p>
 
-            {isActive && (
-                <button className="btn mt-4">Check out</button>
-            )}
+            <Link className="btn mt-4" to="/checkout">Check out</Link>
         </div>
     )
 }
