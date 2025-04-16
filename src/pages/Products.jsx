@@ -9,7 +9,7 @@ const Products = (props) => {
             {data.products.map((item, index) => {
                 return (
                     <li key={index}>
-                        <Link to={`/item/${item.id}`}>
+                        <Link to={`/item?id=${item.id}`}>
                             <div className="h-0 relative overflow-hidden pb-[75%] rounded-[0_14px_0_14px]">
                                 <img className="w-full absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]" src={item.image} />
                             </div>
