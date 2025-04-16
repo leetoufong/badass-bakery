@@ -74,7 +74,7 @@ const App = () => {
             <Route path="/" element={ <Layout data={data} cart={cart} /> }>
                 <Route index element={ <Products setCart={setCart} data={data} /> } />
                 <Route path="/checkout" element={ <Checkout cart={cart} /> } />
-                <Route path="/item" element={ <Item data={data} /> } />
+                <Route path="/item" element={ <Item data={data} setCart={setCart} /> } />
             </Route>
         </Routes>
     )

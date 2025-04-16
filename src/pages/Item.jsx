@@ -3,7 +3,7 @@ import { useLocation } from "react-router";
 import { formatUSD } from "../helpers/formatUSD";
 
 const Item = (props) => {
-    const { data } = props;
+    const { data, setCart } = props;
     const [ currentItem, setCurrentItem ] = useState(null);
     const location = useLocation();
 
@@ -21,6 +21,14 @@ const Item = (props) => {
             <h2>{currentItem?.title}</h2>
             <p>{formatUSD.format(currentItem?.price)}</p>
             <p>{currentItem?.description}</p>
+            <button
+                className="btn mt-4"
+                onClick={() => {
+                    setCart(prev => [...prev, currentItem]);
+                }}
+            >
+                +Add <span className="sr-only">to cart</span>
+            </button>
         </div>
     )
 }
