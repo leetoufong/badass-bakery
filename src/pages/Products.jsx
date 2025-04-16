@@ -6,7 +6,7 @@ const Products = (props) => {
 
     return (
         <ul className="grid sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-8">
-            {data.products.map((item, index) => {
+            {data?.products.map((item, index) => {
                 return (
                     <li key={index}>
                         <Link to={`/item?id=${item.id}`}>

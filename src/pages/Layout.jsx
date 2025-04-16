@@ -9,7 +9,7 @@ const Layout = (props) => {
 
     return (
         <>
-            <Header title={data.title} />
+            <Header title={data?.title} />
 
             {location.pathname !== '/checkout' && <Cart cart={ cart } />}
 
