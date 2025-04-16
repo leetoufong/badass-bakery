@@ -15,7 +15,6 @@ const Products = (props) => {
                             </div>
                         </Link>
                         <p className="text-lg font-bold">{item.title}</p>
-                        <p>{item.description}</p>
                         <p>{formatUSD.format(item.price)}</p>
                         <button
                             className="btn mt-4"

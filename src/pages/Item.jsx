@@ -1,15 +1,27 @@
-import { useEffect } from "react";
-import { Link, useLocation } from "react-router";
+import { useEffect, useState } from "react";
+import { useLocation } from "react-router";
+import { formatUSD } from "../helpers/formatUSD";
 
-const Item = () => {
+const Item = (props) => {
+    const { data } = props;
+    const [ currentItem, setCurrentItem ] = useState(null);
     const location = useLocation();
 
     useEffect(() => {
-        // Do something so we can deep link
-    }, []);
+        if (data) {
+            setCurrentItem(
+                data.products.filter(item => item.id === location.search.split('?id=')[1])[0]
+            )
+        }
+    }, [data]);
 
     return (
-        <div>Item</div>
+        <div>
+            <img src={currentItem?.image} />
+            <h2>{currentItem?.title}</h2>
+            <p>{formatUSD.format(currentItem?.price)}</p>
+            <p>{currentItem?.description}</p>
+        </div>
     )
 }
 

@@ -13,7 +13,7 @@ const Layout = (props) => {
 
             {location.pathname !== '/checkout' && <Cart cart={ cart } />}
 
-            <main className="p-8" role="main">
+            <main className="" role="main">
                 <Outlet />
             </main>
 
