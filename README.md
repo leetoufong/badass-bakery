@@ -1,8 +1,19 @@
-# React + Vite
+# badass-bakery
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Fun little e-commerce site using Vite+React. 
 
-Currently, two official plugins are available:
+## Tech Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- HTML
+- TailwindCSS
+- React
+- Vite
+
+## Getting Started
+
+1. Clone the project
+2. `cd` into root directory
+3. Run `npm i` to install dependencies
+4. Run `npm run dev` to spin up a local Vite environment.
+5. If browser doesn't automatically open, go to `localhost:3000` to preview the page
+6. 
