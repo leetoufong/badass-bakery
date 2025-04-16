@@ -7,14 +7,12 @@
     --color-pink: #f7b2ee;
     --color-blue: #79bbe3;
     --color-purple: #7e65b7;
-    --color-text: #333;
+    --color-text: #201f21;
     --font-display: 'Ranchers', sans-serif;
 }
 
 body {
-    color: var(--text);
-    font-size: 1rem;
-    line-height: 1.45;
+    @apply text-text text-base leading-[1.45];
 }
 
 @layer components {
@@ -23,6 +21,10 @@ body {
     }   
 }
 
-.billboard {
-
+::-moz-selection { /* Code for Firefox */
+    @apply text-purple bg-green-300;
+}
+  
+::selection {
+    @apply text-purple bg-green-300;
 }
