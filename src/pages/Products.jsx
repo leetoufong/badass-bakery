@@ -1,3 +1,4 @@
+import { Link } from "react-router";
 import { formatUSD } from "../helpers/formatUSD";
 
 const Products = (props) => {
@@ -8,9 +9,11 @@ const Products = (props) => {
             {data.products.map((item, index) => {
                 return (
                     <li key={index}>
-                        <div className="h-0 relative overflow-hidden pb-[75%] rounded-[0_14px_0_14px]">
-                            <img className="w-full absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]" src={item.image} />
-                        </div>
+                        <Link to={`/item/${item.id}`}>
+                            <div className="h-0 relative overflow-hidden pb-[75%] rounded-[0_14px_0_14px]">
+                                <img className="w-full absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]" src={item.image} />
+                            </div>
+                        </Link>
                         <p className="text-lg font-bold">{item.title}</p>
                         <p>{item.description}</p>
                         <p>{formatUSD.format(item.price)}</p>

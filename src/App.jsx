@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react'
 import { Routes, Route } from "react-router";
 import Products from './pages/Products'
+import Item from './pages/Item'
 import Checkout from './pages/Checkout'
 import Layout from './pages/Layout'
-import useFetchData from './hooks/useFetchData'
 // import reactLogo from './assets/react.svg'
 // import viteLogo from '/vite.svg'
 import './App.css'
@@ -74,6 +74,7 @@ const App = () => {
             <Route path="/" element={ <Layout data={data} cart={cart} /> }>
                 <Route index element={ <Products setCart={setCart} data={data} /> } />
                 <Route path="/checkout" element={ <Checkout cart={cart} /> } />
+                <Route path="/item/:itemId" element={ <Item /> } />
             </Route>
         </Routes>
     )
