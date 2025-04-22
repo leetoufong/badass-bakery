@@ -1,33 +1,41 @@
 import { Link } from "react-router";
 import { formatUSD } from "../helpers/formatUSD";
+import Filters from "../components/Filters";
+import StarRating from "../components/StarRating";
 
 const Products = (props) => {
     const { setCart, data, items } = props;
 
     return (
-        <ul className="grid sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-8">
-            {data?.products.map((item, index) => {
-                return (
-                    <li key={index}>
-                        <Link to={`/item?id=${item.id}`}>
-                            <div className="h-0 relative overflow-hidden pb-[75%] rounded-[0_14px_0_14px]">
-                                <img className="w-full absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]" src={item.image} />
-                            </div>
-                        </Link>
-                        <p className="text-lg font-bold">{item.title}</p>
-                        <p>{formatUSD.format(item.price)}</p>
-                        <button
-                            className="btn mt-4"
-                            onClick={() => {
-                                setCart(prev => [...prev, item]);
-                            }}
-                        >
-                            +Add <span className="sr-only">to cart</span>
-                        </button>
-                    </li>
-                )
-            })}
-        </ul>
+        <div className="flex">
+            <Filters />
+
+            <ul className="lg:w-3/4 grid sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-4">
+                {data?.products.map((item, index) => {
+                    return (
+                        <li className="rounded-xl p-4 hover:bg-pink-50" key={index}>
+                            <Link to={`/item?id=${item.id}`}>
+                                <div className="rounded-xl border-1 border-gray-200">
+                                    <img className="rounded-xl" src={item.image} />
+                                </div>
+                            </Link>
+                            <p className="text-lg font-bold">{item.title}</p>
+                            <p>{formatUSD.format(item.price)}</p>
+                            <button
+                                className="btn mt-4"
+                                onClick={() => {
+                                    setCart(prev => [...prev, item]);
+                                }}
+                            >
+                                +Add <span className="sr-only">to cart</span>
+                            </button>
+                            
+                            <StarRating />
+                        </li>
+                    )
+                })}
+            </ul>
+        </div>
     )
 }
 
