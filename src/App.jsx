@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Routes, Route } from "react-router";
 import Products from './pages/Products';
-import Item from './pages/Item';
+import ItemDetail from './pages/ItemDetail';
 import Checkout from './pages/Checkout';
 import Layout from './pages/Layout';
 import './App.css'
@@ -12,7 +12,7 @@ const App = () => {
         {
             "id": "423D-3G2D-DGX12",
             "title": "Hello Sundae World",
-            "description": "The best hello world you'll ever taste",
+            "description": "The Hello World Sundae is a fully stacked, developer-approved dessert loaded with vanilla \"root\" ice cream, hot \"Java\" fudge, byte-sized brownies, and syntax-sprinkled toppings — the perfect first commit for your sweet tooth.",
             "image": "https://thefirstyearblog.com/wp-content/uploads/2023/05/Hot-Fudge-Sundae-8.jpg",
             "price": 4.50
         }
@@ -42,7 +42,7 @@ const App = () => {
             <Route path="/" element={ <Layout data={data} cart={cart} /> }>
                 <Route index element={ <Products setCart={setCart} data={data} /> } />
                 <Route path="/checkout" element={ <Checkout cart={cart} /> } />
-                <Route path="/item" element={ <Item data={data} setCart={setCart} /> } />
+                <Route path="/item" element={ <ItemDetail data={data} setCart={setCart} /> } />
             </Route>
         </Routes>
     )

@@ -6,7 +6,7 @@
     --color-pink-light: #ee73B5;
     --color-pink: #f7b2ee;
     --color-blue: #79bbe3;
-    --color-purple: #7e65b7;
+    --color-ui-purple: #7e65b7;
     --color-text: #201f21;
     --font-display: 'Ranchers', sans-serif;
 }
@@ -17,14 +17,14 @@ body {
 
 @layer components {
     .btn {
-        @apply px-3 py-1 rounded border;
-    }   
+        @apply bg-pink-800 text-white px-3 py-1 rounded border;
+    }
 }
 
 ::-moz-selection { /* Code for Firefox */
-    @apply text-purple bg-green-300;
+    @apply text-ui-purple bg-green-300;
 }
   
 ::selection {
-    @apply text-purple bg-green-300;
+    @apply text-ui-purple bg-green-300;
 }
