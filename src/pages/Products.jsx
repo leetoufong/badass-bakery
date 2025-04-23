@@ -15,21 +15,22 @@ const Products = (props) => {
         }
         else {
             // render newProducts list based on filters
-            const newProducts = [];
+            const productsToRender = [];
 
             // loop through each filter
-            filteredCategories.forEach((category) => {
+            filteredCategories.forEach((filter) => {
                 // loop through each product
                 data.products.forEach((product) => {
-                    if (category === product.categories[0]) {
-                        // console.log(product)
-                        newProducts.push(product)
+                    // Note: Product items can belong to multiple categories
+                    // if filter is present in any of the categories
+                    if (product.categories.includes(filter)) {
+                        // add product to temp array
+                        productsToRender.push(product);
                     }
-                })
-                setProducts(newProducts)
-            });
+                });
 
-            // setProducts([]);
+                setProducts(productsToRender);
+            });
         }
     }, [data, filteredCategories]);
 
@@ -38,7 +39,7 @@ const Products = (props) => {
             setFilteredCategories(prevCategories => [...prevCategories, item]);
         }
         else {
-            setFilteredCategories(prevCategories => prevCategories.filter((prevItem) => prevItem !== item))
+            setFilteredCategories(prevCategories => prevCategories.filter((prevItem) => prevItem !== item));
         }
     };
 ``
