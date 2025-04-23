@@ -1,16 +1,23 @@
+import { useEffect, useState } from "react";
 import { Link } from "react-router";
 import { formatUSD } from "../helpers/formatUSD";
 import Filters from "../components/Filters";
 import StarRating from "../components/StarRating";
 
 const Products = (props) => {
-    const { setCart, data, items } = props;
+    const { setCart, data } = props;
+    const [ currentCategories, setCurrentCategories ] = useState([]);
+
+    const handleUpdateCategories = (item) => {
+
+    }
 
     return (
         <div className="flex">
-            <Filters />
+            <Filters data={data} handleUpdateCategories={handleUpdateCategories} />
 
-            <ul className="lg:w-3/4 grid sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-4">
+            {/* Display product if: 1) No filters checked 2) Current filter === product's category */}
+            <ul className="lg:w-4/5 grid sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-4">
                 {data?.products.map((item, index) => {
                     return (
                         <li className="rounded-xl p-4 hover:bg-pink-50" key={index}>
