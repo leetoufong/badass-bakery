@@ -1,12 +1,22 @@
 const Sort = (props) => {
-    const { data, products, setProducts } = props;
+    const { data, setProducts } = props;
 
     const handleProductSort = (value) => {
         if (value.trim().length) {
-            // setProducts(prevProducts => [...prevProducts, products.sort((a, b) => a.price - b.price)])
-        }
-        else {
-            setProducts(data?.products);
+            switch (value) {
+                case 'price-low':
+                    setProducts(prevProducts => [...prevProducts.sort((a, b) => a.price - b.price)]);
+                    break;
+                case 'price-high':
+                    setProducts(prevProducts => [...prevProducts.sort((a, b) => b.price - a.price)]);
+                    break;
+                // case 'rating-low':
+                //     break;
+                // case 'rating-low':
+                //     break;
+                default:
+                    setProducts(data?.products);
+            }
         }
     }
 
@@ -17,9 +27,8 @@ const Sort = (props) => {
                 <option value="">All</option>
                 <option value="price-low">Lowest Price</option>
                 <option value="price-high">Highest Price</option>
-                <option value="name">Name</option>
-                <option value="rating-low">Rating</option>
-                <option value="rating-high">Rating</option>
+                {/* <option value="rating-low">Lowest Rating</option>
+                <option value="rating-high">Highest Rating</option> */}
             </select>
         </header>
     )

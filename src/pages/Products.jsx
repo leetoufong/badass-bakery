@@ -50,7 +50,7 @@ const Products = (props) => {
 
             {/* Display product if: 1) No filters checked 2) Current filter === product's category */}
             <div className="lg:w-4/5">
-                <Sort data={data} products={products} setProducts={setProducts} />
+                <Sort data={data} setProducts={setProducts} />
 
                 <ul className=" grid sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-4">
                     {products?.map((item, index) => {
