@@ -10,7 +10,7 @@ const Filters = (props) => {
 
         data?.products.map((item) => {
             item.categories.forEach((category) => {
-                newCategories.indexOf(category) === -1 ? newCategories.push(category) : '';
+                !newCategories.includes(category) ? newCategories.push(category) : null;
             });
         });
 
@@ -25,7 +25,7 @@ const Filters = (props) => {
                 {categories.map((category, index) => {
                     return (
                         <div className="" key={index}>
-                            <input id={category} type="checkbox" onChange={() => handleUpdateCategories(category)} />
+                            <input id={category} type="checkbox" onChange={(event) => handleUpdateCategories(category)} />
                             <label className="ml-2" htmlFor={category}>{category.charAt(0).toUpperCase() + category.slice(1)}</label>
                         </div>
                     )
