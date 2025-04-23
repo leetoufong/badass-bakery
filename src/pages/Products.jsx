@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router";
 import { formatUSD } from "../helpers/formatUSD";
 import Filters from "../components/Filters";
+import Sort from "../components/Sort";
 import StarRating from "../components/StarRating";
 
 const Products = (props) => {
@@ -48,33 +49,35 @@ const Products = (props) => {
             <Filters data={data} setFilteredCategories={setFilteredCategories} handleUpdateCategories={handleUpdateCategories} />
 
             {/* Display product if: 1) No filters checked 2) Current filter === product's category */}
-            <ul className="lg:w-4/5 grid sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-4">
+            <div className="lg:w-4/5">
+                <Sort data={data} products={products} setProducts={setProducts} />
 
-                {products?.map((item, index) => {
-                    return (
-                        <li className="rounded-xl p-4 hover:bg-pink-50" key={index}>
-                            <Link to={`/item?id=${item.id}`}>
-                                <div className="rounded-xl border-1 border-gray-200">
-                                    <img className="rounded-xl" src={item.image} />
-                                </div>
-                            </Link>
-                            <p className="text-lg font-bold">{item.title}</p>
-                            <p>{formatUSD.format(item.price)}</p>
-                            <button
-                                className="btn mt-4"
-                                onClick={() => {
-                                    setCart(prev => [...prev, item]);
-                                }}
-                            >
-                                +Add <span className="sr-only">to cart</span>
-                            </button>
-                            
-                            <StarRating />
-                        </li>
-                    )
-                })}
-
-            </ul>
+                <ul className=" grid sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-4">
+                    {products?.map((item, index) => {
+                        return (
+                            <li className="rounded-xl p-4 hover:bg-pink-50" key={index}>
+                                <Link to={`/item?id=${item.id}`}>
+                                    <div className="rounded-xl border-1 border-gray-200">
+                                        <img className="rounded-xl" src={item.image} />
+                                    </div>
+                                </Link>
+                                <p className="text-lg font-bold">{item.title}</p>
+                                <p>{formatUSD.format(item.price)}</p>
+                                <button
+                                    className="btn mt-4"
+                                    onClick={() => {
+                                        setCart(prev => [...prev, item]);
+                                    }}
+                                >
+                                    +Add <span className="sr-only">to cart</span>
+                                </button>
+                                
+                                <StarRating />
+                            </li>
+                        )
+                    })}
+                </ul>
+            </div>
         </div>
     )
 }
