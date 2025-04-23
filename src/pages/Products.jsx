@@ -42,10 +42,10 @@ const Products = (props) => {
             setFilteredCategories(prevCategories => prevCategories.filter((prevItem) => prevItem !== item));
         }
     };
-``
+
     return (
         <div className="flex">
-            <Filters data={data} handleUpdateCategories={handleUpdateCategories} />
+            <Filters data={data} setFilteredCategories={setFilteredCategories} handleUpdateCategories={handleUpdateCategories} />
 
             {/* Display product if: 1) No filters checked 2) Current filter === product's category */}
             <ul className="lg:w-4/5 grid sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-4">
