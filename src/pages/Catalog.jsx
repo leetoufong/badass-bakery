@@ -5,13 +5,13 @@ import Filters from "../components/Filters";
 import Sort from "../components/Sort";
 import StarRating from "../components/StarRating";
 
-const Products = (props) => {
+const Catalog = (props) => {
     const { setCart, data } = props;
-    const [ filteredCategories, setFilteredCategories ] = useState([]);
+    const [ filters, setFilters ] = useState([]);
     const [ products, setProducts ] = useState([]);
 
     useEffect(() => {
-        if (!filteredCategories.length) {
+        if (!filters.length) {
             setProducts(data?.products);
         }
         else {
@@ -19,7 +19,7 @@ const Products = (props) => {
             const productsToRender = [];
 
             // loop through each filter
-            filteredCategories.forEach((filter) => {
+            filters.forEach((filter) => {
                 // loop through each product
                 data.products.forEach((product) => {
                     // Note: Product items can belong to multiple categories
@@ -33,20 +33,20 @@ const Products = (props) => {
                 setProducts(productsToRender);
             });
         }
-    }, [data, filteredCategories]);
+    }, [data, filters]);
 
     const handleUpdateCategories = (item) => {
-        if (!filteredCategories.includes(item)) {
-            setFilteredCategories(prevCategories => [...prevCategories, item]);
+        if (!filters.includes(item)) {
+            setFilters(prevCategories => [...prevCategories, item]);
         }
         else {
-            setFilteredCategories(prevCategories => prevCategories.filter((prevItem) => prevItem !== item));
+            setFilters(prevCategories => prevCategories.filter((prevItem) => prevItem !== item));
         }
     };
 
     return (
         <div className="flex">
-            <Filters data={data} setFilteredCategories={setFilteredCategories} handleUpdateCategories={handleUpdateCategories} />
+            <Filters data={data} setFilters={setFilters} handleUpdateCategories={handleUpdateCategories} />
 
             {/* Display product if: 1) No filters checked 2) Current filter === product's category */}
             <div className="lg:w-4/5">
@@ -82,4 +82,4 @@ const Products = (props) => {
     )
 }
 
-export default Products
+export default Catalog;

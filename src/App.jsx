@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Routes, Route } from "react-router";
-import Products from './pages/Products';
+import Catalog from './pages/Catalog';
 import ItemDetail from './pages/ItemDetail';
 import Checkout from './pages/Checkout';
 import Layout from './pages/Layout';
@@ -32,7 +32,7 @@ const App = () => {
     return (
         <Routes>
             <Route path="/" element={ <Layout data={data} cart={cart} /> }>
-                <Route index element={ <Products setCart={setCart} data={data} /> } />
+                <Route index element={ <Catalog setCart={setCart} data={data} /> } />
                 <Route path="/checkout" element={ <Checkout cart={cart} /> } />
                 <Route path="/item" element={ <ItemDetail data={data} setCart={setCart} /> } />
             </Route>

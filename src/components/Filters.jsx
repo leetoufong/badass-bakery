@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react'
 
 const Filters = (props) => {
-    const { data, handleUpdateCategories, setFilteredCategories } = props;
+    const { data, handleUpdateCategories, setFilters } = props;
     const [ categories, setCategories ] = useState([]);
     const checkboxes = useRef(null);
 
@@ -21,7 +21,7 @@ const Filters = (props) => {
         <div className="mr-20 lg:w-1/5">
             <button>Filters</button>
             <h2 className="mb-8 font-bold text-4xl flex justify-between items-end">Filters <button className="text-base font-normal ml-1" onClick={() => {
-                setFilteredCategories([]);
+                setFilters([]);
 
                 checkboxes.current.querySelectorAll('[type="checkbox"]').forEach((checkbox) => {
                     checkbox.checked = false;
