@@ -1,43 +1,36 @@
-import React, { useEffect, useState, useRef } from 'react'
+import React, { useEffect, useState } from 'react'
 
 const Filters = (props) => {
-    const { data, handleUpdateCategories, setFilters } = props;
+    const { products, handleUpdateFilters } = props;
     const [ categories, setCategories ] = useState([]);
-    const checkboxes = useRef(null);
 
+    // Set products and categories by default so we can render
     useEffect(() => {
-        const newCategories = []
+        if (products) {
+            const newCategories = [];
 
-        data?.products.map((item) => {
-            item.categories.forEach((category) => {
-                !newCategories.includes(category) ? newCategories.push(category) : null;
+            products.map((product) => {
+                product.categories.forEach((category) => {
+                    if (!newCategories.includes(category)) {
+                        newCategories.push(category);
+                    }
+                });
             });
-        });
 
-        setCategories(newCategories)
-    }, [data]);
+            setCategories(newCategories);
+        }
+    }, [products]);
 
     return (
-        <div className="mr-20 lg:w-1/5">
-            <button>Filters</button>
-            <h2 className="mb-8 font-bold text-4xl flex justify-between items-end">Filters <button className="text-base font-normal ml-1" onClick={() => {
-                setFilters([]);
-
-                checkboxes.current.querySelectorAll('[type="checkbox"]').forEach((checkbox) => {
-                    checkbox.checked = false;
-                });
-            }}>Clear</button></h2>
-            <ul ref={checkboxes}>
-                {categories.map((category, index) => {
-                    return (
-                        <div className="" key={index}>
-                            <input id={category} type="checkbox" onChange={(event) => handleUpdateCategories(category)} />
-                            <label className="ml-2" htmlFor={category}>{category.charAt(0).toUpperCase() + category.slice(1)}</label>
-                        </div>
-                    )
-                })}
-            </ul>
-        </div>
+        <aside className="lg:w-1/5 lg:pr-10">
+            <h2 className="mb-8 font-bold text-4xl flex justify-between items-end">Filters</h2>
+            {categories.map((category, index) => (
+                <div key={index}>
+                    <input id={category} type="checkbox" onChange={() => handleUpdateFilters(category)} />
+                    <label className="ml-2" htmlFor={category}>{category.charAt(0).toUpperCase() + category.slice(1)}</label>
+                </div>
+            ))}
+        </aside>
     )
 }
 
