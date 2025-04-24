@@ -78,16 +78,16 @@ const Catalog = (props) => {
 
     return (
         <div className="flex">
-            <aside className="lg:w-1/5 lg:pr-10">
+            <aside className="lg:w-1/4 lg:pr-10">
                 <Search handleSearchProducts={handleSearchProducts} />
 
                 <Filters products={data?.products} handleUpdateFilters={handleUpdateFilters} />
             </aside>
 
-            <div className="lg:w-4/5">
+            <div className="lg:w-3/4">
                 <Sort handleProductSort={handleProductSort} />
 
-                <ul className="grid sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-4">
+                <ul className="grid sm:grid-cols-2 lg:grid-cols-3 gap-2">
                     {products?.map((item, index) => {
                         return (
                             <li className="rounded-xl p-4 hover:bg-pink-50" key={index}>
