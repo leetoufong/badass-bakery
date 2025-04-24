@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router";
 import { formatUSD } from "../helpers/formatUSD";
+import Search from "../components/Search";
 import Filters from "../components/Filters";
 import Sort from "../components/Sort";
 import StarRating from "../components/StarRating";
@@ -21,6 +22,10 @@ const Catalog = (props) => {
     useEffect(() => {
         handleRenderProductsBasedOnFilters();
     }, [filters]);
+
+    const handleSearchProducts = (query) => {
+        console.log(query)
+    }
 
     const handleRenderProductsBasedOnFilters = () => {
         if (!filters.length) {
@@ -73,7 +78,11 @@ const Catalog = (props) => {
 
     return (
         <div className="flex">
-            <Filters products={data?.products} handleUpdateFilters={handleUpdateFilters} />
+            <aside className="lg:w-1/5 lg:pr-10">
+                <Search />
+
+                <Filters products={data?.products} handleUpdateFilters={handleUpdateFilters} />
+            </aside>
 
             <div className="lg:w-4/5">
                 <Sort handleProductSort={handleProductSort} />
