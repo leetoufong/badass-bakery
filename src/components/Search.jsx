@@ -7,7 +7,13 @@ const Search = (props) => {
 
     const handleSendSearchQuery = (event) => {
         event.preventDefault();
-        handleSearchProducts(searchValue)
+
+        if (searchValue && searchValue.trim().length) {
+            handleSearchProducts(searchValue);
+        }
+        else {
+            setValid(false);
+        }
     }
 
     return (
@@ -16,15 +22,7 @@ const Search = (props) => {
             <form onSubmit={(event) => handleSendSearchQuery(event)}>
                 <label className="sr-only" htmlFor="search">Search by text</label>
                 <div className="flex">
-                    <input id="search" className="w-full border border-gray-400 rounded p-1" type="text" placeholder="Search..." defaultValue={searchValue} onChange={(event) => {
-                        // validate it
-                        if (event.target.value && event.target.value.trim().length) {
-                            setSearchValue(event.target.value);
-                        }
-                        else {
-                            setValid(false);
-                        }
-                    }} />
+                    <input id="search" className={`w-full border border-gray-400 rounded p-1 ${!valid ? 'bg-red-50' : ''}`} type="text" placeholder="Search..." defaultValue={searchValue} onChange={(event) => setSearchValue(event.target.value)} />
                     <button className="btn ml-1" type='submit'>OK</button>
                 </div>
             </form>
