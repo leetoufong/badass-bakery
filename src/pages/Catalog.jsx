@@ -1,18 +1,41 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router";
 import { formatUSD } from "../helpers/formatUSD";
-import Filters from "../components/Filters";
-import Sort from "../components/Sort";
+// import Filters from "../components/Filters";
+// import Sort from "../components/Sort";
 import StarRating from "../components/StarRating";
 
 const Catalog = (props) => {
     const { setCart, data } = props;
-    const [ filters, setFilters ] = useState([]);
+    const [ catalog, setCatalog ] = useState([]);
+    const [ categories, setCategories ] = useState([]);
     const [ products, setProducts ] = useState([]);
+    const [ filters, setFilters ] = useState([]);
 
+    // Set products and categories by default so we can render
+    useEffect(() => {
+        if (data) {
+            setCatalog([...data.products]);
+            setProducts([...data.products]);
+
+            const newCategories = [];
+
+            data.products.map((item) => {
+                item.categories.forEach((category) => {
+                    if (!newCategories.includes(category)) {
+                        newCategories.push(category);
+                    }
+                });
+            });
+
+            setCategories(newCategories);
+        }
+    }, [data]);
+
+    // Render products based on filter changes
     useEffect(() => {
         if (!filters.length) {
-            setProducts(data?.products);
+            setProducts(catalog);
         }
         else {
             // render newProducts list based on filters
@@ -21,7 +44,7 @@ const Catalog = (props) => {
             // loop through each filter
             filters.forEach((filter) => {
                 // loop through each product
-                data.products.forEach((product) => {
+                catalog.forEach((product) => {
                     // Note: Product items can belong to multiple categories
                     // if filter is present in any of the categories
                     if (product.categories.includes(filter)) {
@@ -33,26 +56,55 @@ const Catalog = (props) => {
                 setProducts(productsToRender);
             });
         }
-    }, [data, filters]);
+    }, [filters]);
 
-    const handleUpdateCategories = (item) => {
+    const handleUpdateFilters = (item) => {
         if (!filters.includes(item)) {
-            setFilters(prevCategories => [...prevCategories, item]);
-        }
-        else {
-            setFilters(prevCategories => prevCategories.filter((prevItem) => prevItem !== item));
+            setFilters(prevFilters => [...prevFilters, item]);
+        } else {
+            setFilters(prevFilters => prevFilters.filter(prevItem => prevItem !== item));
         }
     };
 
+    const handleProductSort = (sort) => {
+        switch (sort) {
+            case 'price-low':
+                setProducts(prev => [...prev.sort((a, b) => a.price - b.price)]);
+                break;
+
+            case 'price-high':
+                setProducts(prev => [...prev.sort((a, b) => b.price - a.price)]);
+                break;
+
+            default:
+                setProducts(catalog);
+        }
+    }
+
     return (
         <div className="flex">
-            <Filters data={data} setFilters={setFilters} handleUpdateCategories={handleUpdateCategories} />
+            <aside className="lg:w-1/5 lg:pr-10">
+                <h2 className="mb-8 font-bold text-4xl flex justify-between items-end">Filters</h2>
+                {categories.map((category, index) => (
+                    <div key={index}>
+                        <input id={category} type="checkbox" onChange={() => handleUpdateFilters(category)} />
+                        <label className="ml-2" htmlFor={category}>{category.charAt(0).toUpperCase() + category.slice(1)}</label>
+                    </div>
+                ))}
+            </aside>
 
-            {/* Display product if: 1) No filters checked 2) Current filter === product's category */}
             <div className="lg:w-4/5">
-                <Sort data={data} setProducts={setProducts} />
-
-                <ul className=" grid sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-4">
+                <header className="flex justify-end mb-8">
+                    <label htmlFor="sort"><strong>Sort by</strong>:</label>
+                    <select id="sort" onChange={(event) => handleProductSort(event.target.value)}>
+                        <option value="">All</option>
+                        <option value="price-low">Lowest Price</option>
+                        <option value="price-high">Highest Price</option>
+                        {/* <option value="rating-low">Lowest Rating</option>
+                        <option value="rating-high">Highest Rating</option> */}
+                    </select>
+                </header>
+                <ul className="grid sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-4">
                     {products?.map((item, index) => {
                         return (
                             <li className="rounded-xl p-4 hover:bg-pink-50" key={index}>
