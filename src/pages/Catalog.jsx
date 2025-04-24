@@ -7,7 +7,6 @@ import StarRating from "../components/StarRating";
 
 const Catalog = (props) => {
     const { setCart, data } = props;
-    const [ catalog, setCatalog ] = useState([]);
     const [ categories, setCategories ] = useState([]);
     const [ products, setProducts ] = useState([]);
     const [ filters, setFilters ] = useState([]);
@@ -15,7 +14,6 @@ const Catalog = (props) => {
     // Set products and categories by default so we can render
     useEffect(() => {
         if (data) {
-            setCatalog([...data.products]);
             setProducts([...data.products]);
 
             const newCategories = [];
@@ -34,8 +32,13 @@ const Catalog = (props) => {
 
     // Render products based on filter changes
     useEffect(() => {
+        handleRenderProductsBasedOnFilters();
+    }, [filters]);
+
+    const handleRenderProductsBasedOnFilters = () => {
         if (!filters.length) {
-            setProducts(catalog);
+            // If no filters at all then set it back to default product view
+            setProducts(data?.products);
         }
         else {
             // render newProducts list based on filters
@@ -44,7 +47,7 @@ const Catalog = (props) => {
             // loop through each filter
             filters.forEach((filter) => {
                 // loop through each product
-                catalog.forEach((product) => {
+                data?.products.forEach((product) => {
                     // Note: Product items can belong to multiple categories
                     // if filter is present in any of the categories
                     if (product.categories.includes(filter)) {
@@ -56,7 +59,7 @@ const Catalog = (props) => {
                 setProducts(productsToRender);
             });
         }
-    }, [filters]);
+    };
 
     const handleUpdateFilters = (item) => {
         if (!filters.includes(item)) {
@@ -77,9 +80,9 @@ const Catalog = (props) => {
                 break;
 
             default:
-                setProducts(catalog);
+                handleRenderProductsBasedOnFilters();
         }
-    }
+    };
 
     return (
         <div className="flex">
@@ -100,8 +103,6 @@ const Catalog = (props) => {
                         <option value="">All</option>
                         <option value="price-low">Lowest Price</option>
                         <option value="price-high">Highest Price</option>
-                        {/* <option value="rating-low">Lowest Rating</option>
-                        <option value="rating-high">Highest Rating</option> */}
                     </select>
                 </header>
                 <ul className="grid sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-4">
