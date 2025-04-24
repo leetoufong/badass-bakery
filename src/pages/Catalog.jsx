@@ -79,7 +79,7 @@ const Catalog = (props) => {
     return (
         <div className="flex">
             <aside className="lg:w-1/5 lg:pr-10">
-                <Search />
+                <Search handleSearchProducts={handleSearchProducts} />
 
                 <Filters products={data?.products} handleUpdateFilters={handleUpdateFilters} />
             </aside>
