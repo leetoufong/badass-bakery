@@ -8,15 +8,7 @@ import './App.css'
 
 const App = () => {
     const [ data, setData ] = useState(null);
-    const [ cart, setCart ] = useState([
-        {
-            "id": "423D-3G2D-DGX12",
-            "title": "Hello Sundae World",
-            "description": "The Hello World Sundae is a fully stacked, developer-approved dessert loaded with vanilla \"root\" ice cream, hot \"Java\" fudge, byte-sized brownies, and syntax-sprinkled toppings — the perfect first commit for your sweet tooth.",
-            "image": "https://thefirstyearblog.com/wp-content/uploads/2023/05/Hot-Fudge-Sundae-8.jpg",
-            "price": 4.50
-        }
-    ]);
+    const [ cart, setCart ] = useState([]);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -30,7 +22,7 @@ const App = () => {
                 console.error(e)
             }
             finally {
-                
+                // Do something final like turning off loader
             }
         };
 
