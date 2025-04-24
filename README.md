@@ -1,6 +1,16 @@
 # badass-bakery
 
-Fun little e-commerce site using Vite+React. 
+Fun little e-commerce site I've always wanted to build for my wife.
+
+## What I want to learn from this project
+
+- Vite build tool
+- Real world scenario
+- Components
+- DOM manipulation
+- State management
+- RESTful API calls
+- Eventually some state management libraries (ie. Redux)
 
 ## Tech Stack
 
