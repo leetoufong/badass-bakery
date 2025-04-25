@@ -11,7 +11,7 @@ const Layout = (props) => {
         <>
             <Header title={data?.title} />
 
-            {location.pathname !== '/checkout' && <Cart cart={ cart } />}
+            {cart.length > 0 && location.pathname !== '/checkout' && <Cart cart={ cart } />}
 
             <main className="w-full max-w-7xl p-8 ml-auto mr-auto" role="main">
                 <Outlet />

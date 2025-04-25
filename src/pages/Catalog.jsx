@@ -85,7 +85,12 @@ const Catalog = (props) => {
             </aside>
 
             <div className="lg:w-3/4">
-                <Sort handleProductSort={handleProductSort} />
+                <header className="flex items-end justify-between mb-8">
+                    {/* Results */}
+                    <p><strong>{products?.length}</strong> Items </p>
+
+                    <Sort handleProductSort={handleProductSort} />
+                </header>
 
                 <ul className="grid sm:grid-cols-2 lg:grid-cols-3 gap-2">
                     {products?.map((item, index) => {
