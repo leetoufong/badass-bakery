@@ -57,6 +57,14 @@
             "categories": ["drinks"],
             "image": "https://i0.wp.com/chawjcreations.com/wp-content/uploads/2019/01/IMG_7531.jpg",
             "price": 5.15
+        },
+        {
+            "id": "BD0F-MVLW-193I",
+            "title": "Macarons",
+            "description": "In every delicate macaron, a universe of flavor and wonder is compressed into a fragile, colorful shell, reminding us that even the smallest creations can hold infinite beauty.",
+            "categories": ["pastries"],
+            "image": "https://sugargeekshow.com/wp-content/uploads/2022/12/french_macarons_featured4.jpg",
+            "price": 5.15
         }
     ]
 }
