@@ -1,16 +1,15 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router";
 import { formatUSD } from "../libs/utils";
-import Search from "../components/Search";
-import Filters from "../components/Filters";
-import Sort from "../components/Sort";
-import StarRating from "../components/StarRating";
+import Search from "./Search";
+import Filters from "./Filters";
+import Sort from "./Sort";
+import StarRating from "./StarRating";
 
 const Catalog = (props) => {
     const { setCart, data } = props;
     const [ products, setProducts ] = useState([]);
     const [ filters, setFilters ] = useState([]);
-    const [ count, setCount ] = useState(0);
 
     // Set products and categories by default so we can render
     useEffect(() => {
@@ -19,17 +18,12 @@ const Catalog = (props) => {
         }
     }, [data]);
 
-    // Render products based on filter changes
     useEffect(() => {
-        // console.log(count);
-    }, [count]);
+        handleRenderProductsBasedOnFilters();
+    }, [filters]);
 
     const handleSearchProducts = (query) => {
         // console.log(query)
-    }
-
-    const handleCount = () => {
-        setCount(prevCount => prevCount + 1)
     }
 
     const handleRenderProductsBasedOnFilters = () => {
@@ -87,8 +81,6 @@ const Catalog = (props) => {
                 <Search handleSearchProducts={handleSearchProducts} />
 
                 <Filters products={data?.products} handleUpdateFilters={handleUpdateFilters} />
-
-                <button onClick={handleCount}>Up!</button>
             </aside>
 
             <div className="lg:w-3/4">
