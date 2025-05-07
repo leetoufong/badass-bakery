@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router";
-import { formatUSD } from "../helpers/formatUSD";
+import { formatUSD } from "../libs/utils";
 
 const Cart = (props) => {
     const { cart } = props;
