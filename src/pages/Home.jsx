@@ -1,3 +1,4 @@
+import Billboard from "../components/Billboard";
 import Catalog from "../components/Catalog";
 
 const Home = (props) => {
@@ -5,9 +6,9 @@ const Home = (props) => {
 
     return (
         <>
-            <div className={`billboard bg-pink-light h-[85vh] flex items-center justify-center`}></div>
+            <Billboard />
     
-            <Catalog setCart={setCart} data={data}></Catalog>
+            <Catalog setCart={setCart} data={data} />
         </>
     )
 }
