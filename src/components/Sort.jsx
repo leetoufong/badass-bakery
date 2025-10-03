@@ -8,6 +8,8 @@ const Sort = (props) => {
                 <option value="">All</option>
                 <option value="price-low">Lowest Price</option>
                 <option value="price-high">Highest Price</option>
+                <option value="a-to-z">A to Z</option>
+                <option value="z-to-a">Z to A</option>
             </select>
         </header>
     )

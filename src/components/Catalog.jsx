@@ -70,6 +70,14 @@ const Catalog = (props) => {
                 setProducts(prev => [...prev.sort((a, b) => b.price - a.price)]);
                 break;
 
+            case 'a-to-z':
+                setProducts(prev => [...prev.sort((a, b) => a.title.localeCompare(b.title))]);
+                break;
+
+            case 'z-to-a':
+                setProducts(prev => [...prev.sort((a, b) => b.title.localeCompare(a.title))]);
+                break;
+
             default:
                 handleRenderProductsBasedOnFilters();
         }
