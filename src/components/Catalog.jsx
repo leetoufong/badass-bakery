@@ -84,7 +84,7 @@ const Catalog = (props) => {
     };
 
     return (
-        <div className="flex">
+        <div className="lg:flex">
             <aside className="lg:w-1/4 lg:pr-10">
                 <Search handleSearchProducts={handleSearchProducts} />
 
