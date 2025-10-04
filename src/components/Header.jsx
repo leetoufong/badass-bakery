@@ -6,7 +6,7 @@ const Header = (props) => {
 
     return (
         <header className="p-10">
-            <h1 className={`font-display uppercase  text-pink-800 ${location.pathname === '/' ? 'text-8xl' : 'text-6xl'}`}>
+            <h1 className={`font-display uppercase  text-pink-800 ${location.pathname === '/' ? 'text-6xl' : 'text-4xl'}`}>
                 {location.pathname !== '/' ? (
                     <Link to="/">{title}</Link>
                 ) : (
@@ -15,6 +15,7 @@ const Header = (props) => {
                     </>
                 )}
             </h1>
+            <p>Savory. Sweet. Savage.</p>
         </header>
     )
 }
