@@ -13,7 +13,7 @@ const Layout = (props) => {
 
             {cart.length > 0 && location.pathname !== '/checkout' && <Cart cart={ cart } />}
 
-            <main className="w-full max-w-7xl p-8 ml-auto mr-auto" role="main">
+            <main className="w-full p-10 pt-0 ml-auto mr-auto" role="main">
                 <Outlet />
             </main>
 

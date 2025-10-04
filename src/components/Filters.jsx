@@ -25,9 +25,9 @@ const Filters = (props) => {
     return (
         <div>
             <h2 className="mb-4 font-bold text-3xl flex justify-between items-end">
-                <button className="lg:cursor-text" onClick={() => setActive(active => !active)}>Filters</button>
+                <button className="xl:cursor-text" onClick={() => setActive(active => !active)}>Filters</button>
             </h2>
-            <ul className={`${active ? 'block' : 'hidden'} lg:block`}>
+            <ul className={`${active ? 'block' : 'hidden'} xl:block`}>
                 {categories.map((category, index) => (
                     <li key={index}>
                         <input id={category} type="checkbox" onChange={() => handleUpdateFilters(category)} />

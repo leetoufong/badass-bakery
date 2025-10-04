@@ -84,14 +84,14 @@ const Catalog = (props) => {
     };
 
     return (
-        <div className="lg:flex">
-            <aside className="lg:w-1/4 lg:pr-10">
+        <div className="xl:flex">
+            <aside className="xl:w-1/4 xl:pr-10">
                 <Search handleSearchProducts={handleSearchProducts} />
 
                 <Filters products={data?.products} handleUpdateFilters={handleUpdateFilters} />
             </aside>
 
-            <div className="lg:w-3/4">
+            <div className="xl:w-3/4">
                 <header className="flex items-end justify-between mb-8">
                     {/* Results */}
                     <p><strong>{products?.length}</strong> Items </p>
@@ -99,13 +99,13 @@ const Catalog = (props) => {
                     <Sort handleProductSort={handleProductSort} />
                 </header>
 
-                <ul className="grid sm:grid-cols-2 lg:grid-cols-3 gap-2">
+                <ul className="grid sm:grid-cols-2 xl:grid-cols-3 gap-2">
                     {products?.map((item, index) => {
                         return (
                             <li className="rounded-xl p-4 hover:bg-pink-50" key={index}>
                                 <Link to={`/item?id=${item.id}`}>
                                     <div className="rounded-xl border-1 border-gray-200">
-                                        <img className="rounded-xl" src={item.image} />
+                                        <img className="rounded-xl w-full max-w-full" src={item.image} />
                                     </div>
                                 </Link>
                                 <p className="text-lg font-bold">{item.title}</p>

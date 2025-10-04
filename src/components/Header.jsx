@@ -5,8 +5,8 @@ const Header = (props) => {
     const location = useLocation();
 
     return (
-        <header>
-            <h1 className={`font-display uppercase  text-pink-800 ${location.pathname === '/' ? 'text-9xl' : 'text-6xl'}`}>
+        <header className="p-10">
+            <h1 className={`font-display uppercase  text-pink-800 ${location.pathname === '/' ? 'text-8xl' : 'text-6xl'}`}>
                 {location.pathname !== '/' ? (
                     <Link to="/">{title}</Link>
                 ) : (
