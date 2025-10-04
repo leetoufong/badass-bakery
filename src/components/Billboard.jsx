@@ -14,7 +14,7 @@ const Billboard = () => {
     return (
         <div ref={videoWrapper} className={`billboard bg-pink-light h-[85vh] flex items-center justify-center`}>
             <video ref={video} muted>
-                <source src="./7525329-hd_1920_1080_25fps.mp4" type="video/mp4" />
+                <source src="./assets/videos/7525329-hd_1920_1080_25fps.mp4" type="video/mp4" />
                 Your browser does not support the video tag.
             </video>
         </div>
