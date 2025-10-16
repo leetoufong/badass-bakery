@@ -5,6 +5,7 @@ import Search from "./Search";
 import Filters from "./Filters";
 import Sort from "./Sort";
 import StarRating from "./StarRating";
+import Button from "../objects/Button";
 
 const Catalog = (props) => {
     const { setCart, data } = props;
@@ -13,14 +14,10 @@ const Catalog = (props) => {
 
     // Set products and categories by default so we can render
     useEffect(() => {
-        if (data) {
-            setProducts([...data.products]);
-        }
+        if (data) setProducts([...data.products]);
     }, [data]);
 
-    useEffect(() => {
-        handleRenderProductsBasedOnFilters();
-    }, [filters]);
+    useEffect(() => handleRenderProductsBasedOnFilters(), [filters]);
 
     const handleSearchProducts = (query) => {
         // console.log(query)
@@ -60,7 +57,7 @@ const Catalog = (props) => {
         }
     };
 
-    const handleProductSort = (sort) => {
+    const handleCatalogSort = (sort) => {
         switch (sort) {
             case 'price-low':
                 setProducts(prev => [...prev.sort((a, b) => a.price - b.price)]);
@@ -96,7 +93,7 @@ const Catalog = (props) => {
                     {/* Results */}
                     <p><strong>{products?.length}</strong> Items </p>
 
-                    <Sort handleProductSort={handleProductSort} />
+                    <Sort handleCatalogSort={handleCatalogSort} />
                 </header>
 
                 <ul className="grid sm:grid-cols-2 xl:grid-cols-3 gap-2">
@@ -108,16 +105,16 @@ const Catalog = (props) => {
                                         <img className="rounded-xl w-full max-w-full" src={item.image} />
                                     </div>
                                 </Link>
+
                                 <p className="text-lg font-bold">{item.title}</p>
                                 <p>{formatUSD.format(item.price)}</p>
-                                <button
-                                    className="btn mt-4"
-                                    onClick={() => {
-                                        setCart(prev => [...prev, item]);
-                                    }}
+                                
+                                <Button
+                                    className={`btn mt-4`}
+                                    onClick={() => setCart(prev => [...prev, currentItem])}
                                 >
-                                    +Add <span className="sr-only">to cart</span>
-                                </button>
+                                    + Add <span className="sr-only">to cart</span>
+                                </Button>
                                 
                                 <StarRating />
                             </li>
