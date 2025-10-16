@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router";
 import { formatUSD } from "../libs/utils";
+import Button from "../objects/Button";
 
 const ItemDetail = (props) => {
     const { data, setCart } = props;
@@ -9,6 +10,7 @@ const ItemDetail = (props) => {
 
     useEffect(() => {
         if (data) {
+            // Deep links
             setCurrentItem(
                 data.products.filter(item => item.id === location.search.split('?id=')[1])[0]
             )
@@ -26,14 +28,12 @@ const ItemDetail = (props) => {
                     <h2 className="mb-4 font-bold text-4xl">{currentItem?.title}</h2>
                     <p className="mb-4">{formatUSD.format(currentItem?.price)}</p>
                     <p className="mb-4">{currentItem?.description}</p>
-                    <button
-                        className="btn mt-4"
-                        onClick={() => {
-                            setCart(prev => [...prev, currentItem]);
-                        }}
+                    <Button
+                        className={`btn mt-4`}
+                        onClick={() => setCart(prev => [...prev, currentItem])}
                     >
                         + Add <span className="sr-only">to cart</span>
-                    </button>
+                    </Button>
                 </figcaption>
             </figure>
         </>
